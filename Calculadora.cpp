@@ -26,12 +26,23 @@ double potencia(double base, double exponente) {
     return pow(base, exponente);
 }
 
+double raizCuadrada(double a) {
+    if (a < 0) {
+        cout << "Error: Raíz cuadrada de número negativo no permitida." << endl;
+        return 0;
+    }
+    return sqrt(a);
+}
+
 int main() {
     double num1, num2;
     char operacion;
-    cout << "Ingrese dos números: ";
-    cin >> num1 >> num2;
-    cout << "Ingrese operación (+, -, *, /, ^): ";
+    cout << "Ingrese un número (para raíz cuadrada) o dos números (para otras operaciones): ";
+    cin >> num1;
+    if (cin.peek() != '\n') {
+        cin >> num2;
+    }
+    cout << "Ingrese operación (+, -, *, /, ^, r): ";
     cin >> operacion;
 
     switch (operacion) {
@@ -49,6 +60,9 @@ int main() {
             break;
         case '^':
             cout << "Resultado: " << potencia(num1, num2) << endl;
+            break;
+        case 'r':
+            cout << "Resultado: " << raizCuadrada(num1) << endl;
             break;
         default:
             cout << "Operación no válida." << endl;
